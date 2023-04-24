@@ -63,7 +63,7 @@ void quick(int *array, int low, int high, int size)
 		pi = partition(array, low, high, size);
 
 		quick(array, low, pi - 1, size);
-		quick(array, pi, high, size);
+		quick(array, pi + 1, high, size);
 	}
 }
 
