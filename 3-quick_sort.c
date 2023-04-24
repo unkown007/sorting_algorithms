@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
  * partition - takes last element as pivot, places the pivot
@@ -14,25 +15,33 @@
  */
 int partition(int *array, int low, int high, int size)
 {
-	int pivot = array[high];
-	int i = low - 1;
-	int j, aux;
+	int left, right, pivot, aux;
 
-	for (j = low; j <= high - 1; j++)
+	left = low;
+	right = high;
+	pivot = array[high];
+
+	while (left < right)
 	{
-		if (array[j] <= pivot)
+		while (array[left] < pivot)
+			left++;
+		while (array[right] >= pivot)
+			right--;
+		if (left < right)
 		{
-			i++;
-			aux = array[i];
-			array[i] = array[j];
-			array[j] = aux;
+			aux = array[left];
+			array[left] = array[right];
+			array[right] = aux;
 			print_array(array, size);
 		}
 	}
-	aux = array[i + 1];
-	array[i + 1] = array[high];
-	array[high] = aux;
-	return (i + 1);
+	if (left != high)
+	{
+		array[high] = array[left];
+		array[left] = pivot;
+		print_array(array, size);
+	}
+	return (left);
 }
 
 /**
