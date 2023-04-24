@@ -74,5 +74,6 @@ void quick(int *array, int low, int high, int size)
  */
 void quick_sort(int *array, size_t size)
 {
-	quick(array, 0, size - 1, size);
+	if (array && size > 1)
+		quick(array, 0, size - 1, size);
 }
