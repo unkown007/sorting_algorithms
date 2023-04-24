@@ -23,16 +23,19 @@ int partition(int *array, int low, int high, int size)
 
 	while (left < right)
 	{
-		while (array[left] < pivot)
+		while (array[left] < pivot && left < right)
 			left++;
-		while (array[right] >= pivot)
+		while (array[right] >= pivot && left < right)
 			right--;
 		if (left < right)
 		{
-			aux = array[left];
-			array[left] = array[right];
-			array[right] = aux;
-			print_array(array, size);
+			if (array[left] != array[right])
+			{
+				aux = array[left];
+				array[left] = array[right];
+				array[right] = aux;
+				print_array(array, size);
+			}
 		}
 	}
 	if (left != high)
@@ -63,7 +66,7 @@ void quick(int *array, int low, int high, int size)
 		pi = partition(array, low, high, size);
 
 		quick(array, low, pi - 1, size);
-		quick(array, pi + 1, high, size);
+		quick(array, pi, high, size);
 	}
 }
 
