@@ -23,19 +23,16 @@ int partition(int *array, int low, int high, int size)
 
 	while (left < right)
 	{
-		while (array[left] < pivot && left < right)
+		while (array[left] < pivot)
 			left++;
-		while (array[right] >= pivot && left < right)
+		while (array[right] >= pivot)
 			right--;
 		if (left < right)
 		{
-			if (array[left] != array[right])
-			{
-				aux = array[left];
-				array[left] = array[right];
-				array[right] = aux;
-				print_array(array, size);
-			}
+			aux = array[left];
+			array[left] = array[right];
+			array[right] = aux;
+			print_array(array, size);
 		}
 	}
 	if (left != high)
