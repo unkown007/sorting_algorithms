@@ -7,10 +7,12 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t i, j, gap;
+	size_t i, j, n, gap;
 	int aux;
 
-	for (gap = 1; gap < size; gap = gap * 3 + 1)
+	gap = 1;
+	n = 1;
+	while (gap < size)
 	{
 		for (i = gap; i < size; i++)
 		{
@@ -20,5 +22,7 @@ void shell_sort(int *array, size_t size)
 			array[j] = aux;
 		}
 		print_array(array, size);
+		n++;
+		gap = n * 3 + 1;
 	}
 }
