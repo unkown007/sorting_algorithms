@@ -37,9 +37,12 @@ int partition(int *array, int low, int high, int size)
 	}
 	if (left != high)
 	{
-		array[high] = array[left];
-		array[left] = pivot;
-		print_array(array, size);
+		if (array[left] > pivot)
+		{
+			array[high] = array[left];
+			array[left] = pivot;
+			print_array(array, size);
+		}
 	}
 	return (left);
 }
@@ -53,7 +56,7 @@ int partition(int *array, int low, int high, int size)
  */
 void quick(int *array, int low, int high, int size)
 {
-	int pi = 0;
+	int pi;
 
 	if (low < high)
 	{
