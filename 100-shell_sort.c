@@ -7,18 +7,27 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t i, j, gap;
-	int aux;
+	size_t i, j, h;
+	int value;
 
-	for (gap = 1; gap < size; gap = (gap * 3) + 1)
+	h = 1;
+	while (h < size)
+		h = 3 * h + 1;
+	while (h > 0)
 	{
-		for (i = gap; i < size; i++)
+		for (i = h; i < size; i++)
 		{
-			aux = array[i];
-			for (j = i; j >= gap && array[j - gap] > aux; j -= gap)
-				array[j] = array[j - gap];
-			array[j] = aux;
+			value = array[i];
+			j = i;
+			while (j > h - 1 && value <= array[j - h])
+			{
+				array[j] = array[j - h];
+				j = j - h;
+			}
+			array[j] = value;
 		}
-		print_array(array, size);
+		if (h < size)
+			print_array(array, size);
+		h = h / 3;
 	}
 }
