@@ -24,12 +24,13 @@ void heap(int *array, int beg, int end, size_t size)
 			array[beg] = array[j];
 			beg = j;
 			j = 2 * beg + 1;
+			array[beg] = aux;
 			print_array(array, size);
 		}
 		else
 			j = end + 1;
 	}
-	array[beg] = aux;
+	/*array[beg] = aux;*/
 }
 
 /**
