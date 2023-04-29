@@ -49,7 +49,7 @@ void heap_sort(int *array, size_t size)
 		aux = array[0];
 		array[0] = array[i];
 		array[i] = aux;
-		heap(array, 0, i - 1, size);
 		print_array(array, size);
+		heap(array, 0, i - 1, size);
 	}
 }
